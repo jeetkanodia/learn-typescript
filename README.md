@@ -1,3 +1,3 @@
-repo for learning typescript and simple projects on it
+Repo for learning typescript and simple projects on it
 
-basic typescript todo app <a href="https://todos-ts-inky.vercel.app/">Link</a>
+-> Basic typescript todo app <a target="blank" href="https://todos-ts-inky.vercel.app/">Link</a>
