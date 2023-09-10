@@ -36,12 +36,19 @@ const generateTodoItem = (item:Todo) => {
   checkBox.setAttribute('type' , 'checkbox');
   checkBox.className='isCompleted'
   checkBox.checked = item.isCompleted;
-
+  checkBox.onchange = () =>{
+    todos.find(i=>{
+      if(i.id===item.id) i.isCompleted = checkBox.checked;
+  })
+    paragraph.className = checkBox.checked? "textCut" : "";
+  }
   const paragraph = document.createElement('p')
  paragraph.innerText = item.title
+ paragraph.className = checkBox.checked? "textCut" : "";
   const btn = document.createElement('button')
   btn.innerText='X'
   btn.className='deleteBtn'
+  btn.onclick = ()=> {deleteTodo(item.id)}
 
   todo.append(checkBox , paragraph, btn);
   todosContainer.append(todo)
@@ -52,4 +59,10 @@ const renderTodo = (todos: Todo[]) => {
   todos.forEach(item => {
     generateTodoItem(item)
   })
+}
+
+const deleteTodo = (id:string)=>{
+const idx = todos.findIndex(item=>item.id===id)
+todos.splice(idx,1);
+renderTodo(todos)
 }
